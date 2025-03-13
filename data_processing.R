@@ -16,6 +16,7 @@ ab_review<-ab_pubs_clean$review
 write_csv(prelim,"./data_clean/ab_prelim.csv")
 write_csv(review,"./data_clean/ab_review.csv")
 
+
 ab_refined <- authors_refine(ab_pubs_clean$review, 
                              ab_pubs_clean$prelim)
 
