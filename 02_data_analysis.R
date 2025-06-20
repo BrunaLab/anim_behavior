@@ -108,7 +108,7 @@ top_countries_by_region_all<-all_georef %>%
          perc_pooled=perc) %>% 
   relocate(rank_pooled,.before="n_pooled") %>% 
   mutate(country_code=as.factor(country_code)) %>% 
-  mutate(perc=round(perc_pooled,2))
+  mutate(perc_pooled=round(perc_pooled,2))
 
 
 
