@@ -119,7 +119,11 @@ top_countries_by_region<-all_georef %>%
   arrange(jrnl,region,desc(n)) %>% 
   relocate(jrnl,.before=1) %>% 
   group_by(jrnl,region) %>% 
-  mutate(rank = row_number()) 
+  mutate(rank = row_number()) %>% 
+  mutate(jrnl=as.factor(jrnl),
+         country_code=as.factor(country_code)) %>% 
+  mutate(perc=round(perc,2))
+  
 
 ab<-top_countries_by_region %>% 
   filter(jrnl=="ab") %>% 
