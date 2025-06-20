@@ -62,7 +62,7 @@ geocoded_authors<-total_authors-na_authors
 
 # COUNTRY (note - UK countries separate when using country.name but not when
 # using country_code)
-all_georef %>% 
+top_countries<-all_georef %>% 
   # group_by(country.name) %>% 
   group_by(country_code) %>% 
   filter(!is.na(country_code)) %>% 
@@ -92,6 +92,69 @@ all_georef %>%
   arrange(desc(n))
 
 
+# countries within regions
+
+top_countries_by_region_all<-all_georef %>% 
+  group_by(region,country_code) %>% 
+  # group_by(region) %>% 
+  filter(!is.na(region)) %>% 
+  tally() %>% 
+  mutate(perc=n/sum(n)*100) %>%
+  arrange(region,desc(n)) %>% 
+  group_by(region) %>% 
+  mutate(rank = row_number()) %>% 
+  rename(rank_pooled=rank,
+         n_pooled=n,
+         perc_pooled=perc) %>% 
+  relocate(rank_pooled,.before="n_pooled")
+
+
+
+top_countries_by_region<-all_georef %>% 
+  group_by(region,jrnl,country_code) %>% 
+  # group_by(region) %>% 
+  filter(!is.na(region)) %>% 
+  tally() %>% 
+  mutate(perc=n/sum(n)*100) %>%
+  arrange(jrnl,region,desc(n)) %>% 
+  relocate(jrnl,.before=1) %>% 
+  group_by(jrnl,region) %>% 
+  mutate(rank = row_number()) 
+
+ab<-top_countries_by_region %>% 
+  filter(jrnl=="ab") %>% 
+  pivot_wider(names_from = jrnl, values_from = n:perc, values_fill = 0) %>% 
+  rename(rank_ab=rank)
+
+be<-top_countries_by_region %>% 
+  filter(jrnl=="be") %>% 
+  pivot_wider(names_from = jrnl, values_from = n:perc, values_fill = 0) %>% 
+  rename(rank_be=rank)
+
+bes<-top_countries_by_region %>% 
+  filter(jrnl=="bes") %>% 
+  pivot_wider(names_from = jrnl, values_from = n:perc, values_fill = 0) %>% 
+  rename(rank_bes=rank)
+
+country_rankings_within_region<-top_countries_by_region_all %>% 
+full_join(ab,by=c("region","country_code")) %>% 
+  full_join(be,by=c("region","country_code")) %>% 
+  full_join(bes,by=c("region","country_code")) 
+
+write_csv(country_rankings_within_region,"./data_clean/country_rankings_within_region.csv")
+
+
+#  
+#   relocate(rank,.before="n")
+  
+top_countries_by_region<-top_countries_by_region %>% 
+pivot_wider(names_from = jrnl, values_from = n:perc, values_fill = 0) %>% 
+  relocate(perc_ab,.after="n_ab") %>% 
+  relocate(perc_be,.after="n_be") %>% 
+  relocate(perc_bes,.after="n_bes")
+
+top_countries_by_region %>% 
+arrange(desc(pick(starts_with("n_bes"))))
 
 # plot points -------------------------------------------------------------
 
