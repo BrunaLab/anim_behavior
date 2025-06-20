@@ -17,38 +17,101 @@ all_pubs<-read_csv("./data_clean/all_pubs.csv") %>%
 
 all_refined<-read_csv("./data_clean/all_refined.csv")
 
-all_georef <-read_rds("./data_clean/all_georef.rds")
+all_georef <-read_rds("./data_clean/all_georef_clean.rds")
 
 
 
-# all_georef$addresses: all info from 'refine_authors' 
-# plus new columns with lat & long. It includes ALL addresses, 
-# including those that could not be geocoded. 
-all_georef$addresses %>% 
-  group_by(address) %>% 
+pub_data<-all_pubs %>% select(refID,SO,PY) %>% 
+  mutate(jrnl=
+           case_when(
+             SO == "ANIMAL BEHAVIOUR" ~ "ab",
+             SO == "BEHAVIORAL ECOLOGY AND SOCIOBIOLOGY" ~ "bes",
+             SO == "BEHAVIORAL ECOLOGY" ~ "be",
+             .default = as.character(SO)
+           )
+  ) %>% 
+  mutate_all(tolower) 
+
+all_georef<-left_join(all_georef,pub_data,by="refID")
+
+# papers 
+total_pubs<-
+all_georef %>% 
+  select(refID) %>%
+  distinct() %>% 
+  tally()
+
+
+# authors 
+
+total_authors<-all_georef %>% 
+  select(groupID) %>%
+  distinct() %>% 
+  tally()
+total_authors
+# authors without address (no extraction possible)
+na_authors<-
+all_georef %>% 
+  filter(address=="could not be extracted") %>%
+  select(groupID) %>%
+  distinct() %>% 
+  tally()
+na_authors
+
+geocoded_authors<-total_authors-na_authors
+
+# COUNTRY (note - UK countries separate when using country.name but not when
+# using country_code)
+all_georef %>% 
+  # group_by(country.name) %>% 
+  group_by(country_code) %>% 
+  filter(!is.na(country_code)) %>% 
   tally() %>% 
   arrange(desc(n))
 
-# all_georef$missing_addresses: a data frame of the addresses that 
-# could NOT be geocoded.
-all_georef$missing_addresses %>% 
-  group_by(address) %>% 
+# World Bank Region
+
+all_georef %>% 
+  group_by(region,jrnl) %>% 
+  # group_by(region) %>% 
+  filter(!is.na(region)) %>% 
   tally() %>% 
+  mutate(perc=n/sum(n)*100) %>% 
+  arrange(desc(n)) %>% 
+  arrange(jrnl,region)
+
+
+# World Bank Income Category
+
+all_georef %>% 
+  # group_by(income_group,jrnl) %>% 
+  group_by(income_group) %>% 
+  filter(!is.na(income_group)) %>% 
+  tally() %>% 
+  mutate(perc=n/sum(n)*100) %>% 
   arrange(desc(n))
 
-# all_georef$no_missing_addresses: a data frame with ONLY the addresses
-# that were geocoded. 
 
-# foo<-all_georef$no_missing_addresses %>% slice(1:100)
 
-plot_addresses_points <- plot_addresses_points(all_georef$no_missing_addresses)
+# plot points -------------------------------------------------------------
+
+
+
+plot_addresses_points <- plot_addresses_points(all_georef)
 plot_addresses_points
 
+Plot 
 
-plot_net_address <-plot_net_address(all_georef$no_missing_addresses,
+plot_net_address <-plot_net_address(all_georef,
                                     lineResolution = 10,
                                     lineAlpha=.1)
 plot_net_address
+
+
+
+
+
+
 
 
 
