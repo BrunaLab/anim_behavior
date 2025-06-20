@@ -1,114 +1,114 @@
-region,country_code,rank_pooled,n_pooled,perc_pooled,rank_ab,n_ab,perc_ab,rank_be,n_be,perc_be,rank_bes,n_bes,perc_bes
-north america,usa,1,13421,78.71092604539324,1,6442,79.12,1,3197,75.85,1,3782,80.57
-north america,can,2,3630,21.289073954606767,2,1700,20.88,2,1018,24.15,2,912,19.43
-europe & central asia,gbr,1,6294,27.98328294504713,1,3171,33.26,1,1868,30.36,2,1255,18.45
-europe & central asia,deu,2,3142,13.969411346256447,2,1185,12.43,2,701,11.39,1,1256,18.46
-europe & central asia,fra,3,2221,9.874622087853458,3,1078,11.31,3,576,9.36,4,567,8.33
-europe & central asia,esp,4,1539,6.842432865018673,7,471,4.94,4,433,7.04,3,635,9.33
-europe & central asia,che,5,1220,5.424150809176596,4,542,5.68,7,340,5.53,6,338,4.97
-europe & central asia,nld,6,1167,5.188511470745154,6,506,5.31,5,401,6.52,9,260,3.82
-europe & central asia,ita,7,1107,4.921749955539748,5,528,5.54,10,178,2.89,5,401,5.89
-europe & central asia,swe,8,1051,4.672772541348035,8,378,3.96,6,348,5.66,7,325,4.78
-europe & central asia,fin,9,794,3.5301440512182114,11,198,2.08,8,285,4.63,8,311,4.57
-europe & central asia,nor,10,626,2.783211808643073,12,181,1.9,9,223,3.62,10,222,3.26
-europe & central asia,bel,11,503,2.23635070247199,10,216,2.27,13,114,1.85,13,173,2.54
-europe & central asia,aut,12,470,2.0896318691090165,9,259,2.72,16,78,1.27,14,133,1.95
-europe & central asia,cze,13,429,1.9073448337186556,13,142,1.49,15,94,1.53,12,193,2.84
-europe & central asia,hun,14,427,1.8984527832118088,16,123,1.29,14,103,1.67,11,201,2.95
-europe & central asia,prt,15,388,1.7250577983282944,14,132,1.38,11,128,2.08,16,128,1.88
-europe & central asia,pol,16,369,1.640583318513249,17,120,1.26,12,119,1.93,15,130,1.91
-europe & central asia,dnk,17,257,1.142628490129824,15,123,1.29,17,71,1.15,17,63,0.93
-europe & central asia,irl,18,105,0.4668326516094611,18,49,0.51,18,26,0.42,20,30,0.44
-europe & central asia,rus,19,82,0.364574070780722,21,19,0.2,20,9,0.15,18,54,0.79
-europe & central asia,svn,20,58,0.2578694646985595,20,21,0.22,25,6,0.1,19,31,0.46
-europe & central asia,est,21,35,0.1556108838698204,23,12,0.13,22,7,0.11,22,16,0.24
-europe & central asia,grc,22,30,0.13338075760270318,19,21,0.22,NA,NA,NA,24,9,0.13
-europe & central asia,rou,23,28,0.12448870709585631,29,5,0.05,26,3,0.05,21,20,0.29
-europe & central asia,svk,24,25,0.11115063133558599,24,12,0.13,27,2,0.03,23,11,0.16
-europe & central asia,isl,25,23,0.1022585808287391,22,14,0.15,23,7,0.11,30,2,0.03
-europe & central asia,lva,26,23,0.1022585808287391,26,7,0.07,24,7,0.11,25,9,0.13
-europe & central asia,srb,27,21,0.09336653032189222,NA,NA,NA,19,12,0.2,26,9,0.13
-europe & central asia,tur,28,21,0.09336653032189222,27,6,0.06,21,9,0.15,28,6,0.09
-europe & central asia,hrv,29,15,0.06669037880135159,25,8,0.08,NA,NA,NA,27,7,0.1
-europe & central asia,mco,30,6,0.026676151520540634,28,5,0.05,30,1,0.02,NA,NA,NA
-europe & central asia,bgr,31,4,0.017784101013693758,31,1,0.01,NA,NA,NA,29,3,0.04
-europe & central asia,cyp,32,2,0.008892050506846879,30,2,0.02,NA,NA,NA,NA,NA,NA
-europe & central asia,lux,33,2,0.008892050506846879,NA,NA,NA,NA,NA,NA,31,2,0.03
-europe & central asia,mkd,34,2,0.008892050506846879,NA,NA,NA,31,1,0.02,35,1,0.01
-europe & central asia,ukr,35,2,0.008892050506846879,NA,NA,NA,28,2,0.03,NA,NA,NA
-europe & central asia,arm,36,1,0.0044460252534234395,NA,NA,NA,NA,NA,NA,32,1,0.01
-europe & central asia,gib,37,1,0.0044460252534234395,NA,NA,NA,NA,NA,NA,33,1,0.01
-europe & central asia,grl,38,1,0.0044460252534234395,NA,NA,NA,29,1,0.02,NA,NA,NA
-europe & central asia,kaz,39,1,0.0044460252534234395,NA,NA,NA,NA,NA,NA,34,1,0.01
-east asia & pacific,aus,1,3378,57.645051194539256,1,1359,56.16,1,1111,67.54,1,908,50.58
-east asia & pacific,chn,2,1007,17.18430034129693,2,405,16.74,2,212,12.89,2,390,21.73
-east asia & pacific,jpn,3,851,14.522184300341298,3,391,16.16,3,154,9.36,3,306,17.05
-east asia & pacific,nzl,4,333,5.6825938566552905,4,173,7.15,4,94,5.71,4,66,3.68
-east asia & pacific,kor,5,104,1.7747440273037545,6,21,0.87,5,35,2.13,5,48,2.67
-east asia & pacific,sgp,6,77,1.3139931740614335,5,39,1.61,6,21,1.28,8,17,0.95
-east asia & pacific,idn,7,45,0.7679180887372014,7,16,0.66,7,5,0.3,6,24,1.34
-east asia & pacific,tha,8,31,0.5290102389078498,9,5,0.21,8,5,0.3,7,21,1.17
-east asia & pacific,mys,9,19,0.3242320819112628,8,9,0.37,10,3,0.18,9,7,0.39
-east asia & pacific,brn,10,6,0.10238907849829351,NA,NA,NA,9,4,0.24,11,2,0.11
-east asia & pacific,mmr,11,4,0.06825938566552901,NA,NA,NA,NA,NA,NA,10,4,0.22
-east asia & pacific,mng,12,2,0.034129692832764506,11,1,0.04,NA,NA,NA,12,1,0.06
-east asia & pacific,fji,13,1,0.017064846416382253,10,1,0.04,NA,NA,NA,NA,NA,NA
-east asia & pacific,ncl,14,1,0.017064846416382253,NA,NA,NA,11,1,0.06,NA,NA,NA
-east asia & pacific,vnm,15,1,0.017064846416382253,NA,NA,NA,NA,NA,NA,13,1,0.06
-latin america & caribbean,bra,1,585,33.23863636363637,1,211,32.76,1,128,34.78,1,246,32.89
-latin america & caribbean,mex,2,343,19.488636363636363,2,114,17.7,2,70,19.02,2,159,21.26
-latin america & caribbean,arg,3,254,14.431818181818182,3,77,11.96,3,47,12.77,3,130,17.38
-latin america & caribbean,chl,4,175,9.943181818181818,5,59,9.16,5,38,10.33,4,78,10.43
-latin america & caribbean,pan,5,150,8.522727272727272,4,62,9.63,4,40,10.87,5,48,6.42
-latin america & caribbean,cri,6,66,3.75,6,39,6.06,6,14,3.8,7,13,1.74
-latin america & caribbean,col,7,50,2.840909090909091,7,19,2.95,10,4,1.09,6,27,3.61
-latin america & caribbean,ury,8,38,2.159090909090909,8,17,2.64,8,8,2.17,8,13,1.74
-latin america & caribbean,tto,9,24,1.3636363636363635,11,8,1.24,7,8,2.17,9,8,1.07
-latin america & caribbean,bhs,10,18,1.0227272727272727,9,13,2.02,12,1,0.27,12,4,0.53
-latin america & caribbean,ecu,11,18,1.0227272727272727,10,9,1.4,9,5,1.36,13,4,0.53
-latin america & caribbean,ven,12,15,0.8522727272727272,12,6,0.93,11,2,0.54,10,7,0.94
-latin america & caribbean,guy,13,6,0.3409090909090909,NA,NA,NA,NA,NA,NA,11,6,0.8
-latin america & caribbean,brb,14,4,0.22727272727272727,14,2,0.31,13,1,0.27,15,1,0.13
-latin america & caribbean,per,15,4,0.22727272727272727,19,1,0.16,15,1,0.27,14,2,0.27
-latin america & caribbean,blz,16,2,0.11363636363636363,13,2,0.31,NA,NA,NA,NA,NA,NA
-latin america & caribbean,cub,17,2,0.11363636363636363,15,2,0.31,NA,NA,NA,NA,NA,NA
-latin america & caribbean,jam,18,2,0.11363636363636363,18,1,0.16,NA,NA,NA,17,1,0.13
-latin america & caribbean,bol,19,1,0.056818181818181816,16,1,0.16,NA,NA,NA,NA,NA,NA
-latin america & caribbean,cym,20,1,0.056818181818181816,NA,NA,NA,14,1,0.27,NA,NA,NA
-latin america & caribbean,grd,21,1,0.056818181818181816,17,1,0.16,NA,NA,NA,NA,NA,NA
-latin america & caribbean,gtm,22,1,0.056818181818181816,NA,NA,NA,NA,NA,NA,16,1,0.13
-sub-saharan africa,zaf,1,545,65.19138755980862,1,247,65.69,1,132,70.21,1,166,61.03
-sub-saharan africa,ken,2,50,5.980861244019139,2,19,5.05,2,14,7.45,3,17,6.25
-sub-saharan africa,uga,3,41,4.904306220095694,3,17,4.52,3,12,6.38,4,12,4.41
-sub-saharan africa,bwa,4,39,4.6650717703349285,5,13,3.46,6,4,2.13,2,22,8.09
-sub-saharan africa,tza,5,27,3.2296650717703352,4,16,4.26,4,7,3.72,10,4,1.47
-sub-saharan africa,civ,6,18,2.15311004784689,6,11,2.93,11,1,0.53,8,6,2.21
-sub-saharan africa,nam,7,18,2.15311004784689,7,10,2.66,13,1,0.53,7,7,2.57
-sub-saharan africa,rwa,8,18,2.15311004784689,8,8,2.13,NA,NA,NA,5,10,3.68
-sub-saharan africa,zwe,9,15,1.7942583732057416,9,8,2.13,5,5,2.66,14,2,0.74
-sub-saharan africa,gab,10,14,1.674641148325359,10,5,1.33,NA,NA,NA,6,9,3.31
-sub-saharan africa,mdg,11,11,1.3157894736842104,16,2,0.53,8,3,1.6,9,6,2.21
-sub-saharan africa,zmb,12,7,0.8373205741626795,12,4,1.06,10,2,1.06,18,1,0.37
-sub-saharan africa,cog,13,6,0.7177033492822966,11,4,1.06,NA,NA,NA,12,2,0.74
-sub-saharan africa,mrt,14,6,0.7177033492822966,17,2,0.53,7,4,2.13,NA,NA,NA
-sub-saharan africa,syc,15,5,0.5980861244019139,14,3,0.8,9,2,1.06,NA,NA,NA
-sub-saharan africa,eth,16,4,0.4784688995215311,NA,NA,NA,12,1,0.53,11,3,1.1
-sub-saharan africa,mus,17,3,0.3588516746411483,13,3,0.8,NA,NA,NA,NA,NA,NA
-sub-saharan africa,cmr,18,2,0.23923444976076555,18,1,0.27,NA,NA,NA,16,1,0.37
-sub-saharan africa,gnb,19,2,0.23923444976076555,15,2,0.53,NA,NA,NA,NA,NA,NA
-sub-saharan africa,sen,20,2,0.23923444976076555,NA,NA,NA,NA,NA,NA,13,2,0.74
-sub-saharan africa,caf,21,1,0.11961722488038277,NA,NA,NA,NA,NA,NA,15,1,0.37
-sub-saharan africa,cod,22,1,0.11961722488038277,NA,NA,NA,NA,NA,NA,17,1,0.37
-sub-saharan africa,nga,23,1,0.11961722488038277,19,1,0.27,NA,NA,NA,NA,NA,NA
-south asia,ind,1,243,94.921875,1,116,99.15,1,43,87.76,1,84,93.33
-south asia,lka,2,13,5.078125,2,1,0.85,2,6,12.24,2,6,6.67
-middle east & north africa,isr,1,515,94.32234432234432,1,171,91.94,1,185,96.86,1,159,94.08
-middle east & north africa,irn,2,12,2.197802197802198,2,8,4.3,2,4,2.09,NA,NA,NA
-middle east & north africa,mlt,3,5,0.9157509157509158,NA,NA,NA,NA,NA,NA,2,5,2.96
-middle east & north africa,sau,4,4,0.7326007326007326,5,2,1.08,4,1,0.52,6,1,0.59
-middle east & north africa,mar,5,3,0.5494505494505495,4,2,1.08,NA,NA,NA,5,1,0.59
-middle east & north africa,are,6,2,0.3663003663003663,3,2,1.08,NA,NA,NA,NA,NA,NA
-middle east & north africa,lby,7,2,0.3663003663003663,NA,NA,NA,NA,NA,NA,3,2,1.18
-middle east & north africa,dza,8,1,0.18315018315018314,6,1,0.54,NA,NA,NA,NA,NA,NA
-middle east & north africa,egy,9,1,0.18315018315018314,NA,NA,NA,NA,NA,NA,4,1,0.59
-middle east & north africa,qat,10,1,0.18315018315018314,NA,NA,NA,3,1,0.52,NA,NA,NA
+region,country_code,rank_pooled,n_pooled,perc_pooled,perc,rank_ab,n_ab,perc_ab,rank_be,n_be,perc_be,rank_bes,n_bes,perc_bes
+north america,usa,1,13421,78.71092604539324,78.71,1,6442,79.12,1,3197,75.85,1,3782,80.57
+north america,can,2,3630,21.289073954606767,21.29,2,1700,20.88,2,1018,24.15,2,912,19.43
+europe & central asia,gbr,1,6294,27.98328294504713,27.98,1,3171,33.26,1,1868,30.36,2,1255,18.45
+europe & central asia,deu,2,3142,13.969411346256447,13.97,2,1185,12.43,2,701,11.39,1,1256,18.46
+europe & central asia,fra,3,2221,9.874622087853458,9.87,3,1078,11.31,3,576,9.36,4,567,8.33
+europe & central asia,esp,4,1539,6.842432865018673,6.84,7,471,4.94,4,433,7.04,3,635,9.33
+europe & central asia,che,5,1220,5.424150809176596,5.42,4,542,5.68,7,340,5.53,6,338,4.97
+europe & central asia,nld,6,1167,5.188511470745154,5.19,6,506,5.31,5,401,6.52,9,260,3.82
+europe & central asia,ita,7,1107,4.921749955539748,4.92,5,528,5.54,10,178,2.89,5,401,5.89
+europe & central asia,swe,8,1051,4.672772541348035,4.67,8,378,3.96,6,348,5.66,7,325,4.78
+europe & central asia,fin,9,794,3.5301440512182114,3.53,11,198,2.08,8,285,4.63,8,311,4.57
+europe & central asia,nor,10,626,2.783211808643073,2.78,12,181,1.9,9,223,3.62,10,222,3.26
+europe & central asia,bel,11,503,2.23635070247199,2.24,10,216,2.27,13,114,1.85,13,173,2.54
+europe & central asia,aut,12,470,2.0896318691090165,2.09,9,259,2.72,16,78,1.27,14,133,1.95
+europe & central asia,cze,13,429,1.9073448337186556,1.91,13,142,1.49,15,94,1.53,12,193,2.84
+europe & central asia,hun,14,427,1.8984527832118088,1.9,16,123,1.29,14,103,1.67,11,201,2.95
+europe & central asia,prt,15,388,1.7250577983282944,1.73,14,132,1.38,11,128,2.08,16,128,1.88
+europe & central asia,pol,16,369,1.640583318513249,1.64,17,120,1.26,12,119,1.93,15,130,1.91
+europe & central asia,dnk,17,257,1.142628490129824,1.14,15,123,1.29,17,71,1.15,17,63,0.93
+europe & central asia,irl,18,105,0.4668326516094611,0.47,18,49,0.51,18,26,0.42,20,30,0.44
+europe & central asia,rus,19,82,0.364574070780722,0.36,21,19,0.2,20,9,0.15,18,54,0.79
+europe & central asia,svn,20,58,0.2578694646985595,0.26,20,21,0.22,25,6,0.1,19,31,0.46
+europe & central asia,est,21,35,0.1556108838698204,0.16,23,12,0.13,22,7,0.11,22,16,0.24
+europe & central asia,grc,22,30,0.13338075760270318,0.13,19,21,0.22,NA,NA,NA,24,9,0.13
+europe & central asia,rou,23,28,0.12448870709585631,0.12,29,5,0.05,26,3,0.05,21,20,0.29
+europe & central asia,svk,24,25,0.11115063133558599,0.11,24,12,0.13,27,2,0.03,23,11,0.16
+europe & central asia,isl,25,23,0.1022585808287391,0.1,22,14,0.15,23,7,0.11,30,2,0.03
+europe & central asia,lva,26,23,0.1022585808287391,0.1,26,7,0.07,24,7,0.11,25,9,0.13
+europe & central asia,srb,27,21,0.09336653032189222,0.09,NA,NA,NA,19,12,0.2,26,9,0.13
+europe & central asia,tur,28,21,0.09336653032189222,0.09,27,6,0.06,21,9,0.15,28,6,0.09
+europe & central asia,hrv,29,15,0.06669037880135159,0.07,25,8,0.08,NA,NA,NA,27,7,0.1
+europe & central asia,mco,30,6,0.026676151520540634,0.03,28,5,0.05,30,1,0.02,NA,NA,NA
+europe & central asia,bgr,31,4,0.017784101013693758,0.02,31,1,0.01,NA,NA,NA,29,3,0.04
+europe & central asia,cyp,32,2,0.008892050506846879,0.01,30,2,0.02,NA,NA,NA,NA,NA,NA
+europe & central asia,lux,33,2,0.008892050506846879,0.01,NA,NA,NA,NA,NA,NA,31,2,0.03
+europe & central asia,mkd,34,2,0.008892050506846879,0.01,NA,NA,NA,31,1,0.02,35,1,0.01
+europe & central asia,ukr,35,2,0.008892050506846879,0.01,NA,NA,NA,28,2,0.03,NA,NA,NA
+europe & central asia,arm,36,1,0.0044460252534234395,0,NA,NA,NA,NA,NA,NA,32,1,0.01
+europe & central asia,gib,37,1,0.0044460252534234395,0,NA,NA,NA,NA,NA,NA,33,1,0.01
+europe & central asia,grl,38,1,0.0044460252534234395,0,NA,NA,NA,29,1,0.02,NA,NA,NA
+europe & central asia,kaz,39,1,0.0044460252534234395,0,NA,NA,NA,NA,NA,NA,34,1,0.01
+east asia & pacific,aus,1,3378,57.645051194539256,57.65,1,1359,56.16,1,1111,67.54,1,908,50.58
+east asia & pacific,chn,2,1007,17.18430034129693,17.18,2,405,16.74,2,212,12.89,2,390,21.73
+east asia & pacific,jpn,3,851,14.522184300341298,14.52,3,391,16.16,3,154,9.36,3,306,17.05
+east asia & pacific,nzl,4,333,5.6825938566552905,5.68,4,173,7.15,4,94,5.71,4,66,3.68
+east asia & pacific,kor,5,104,1.7747440273037545,1.77,6,21,0.87,5,35,2.13,5,48,2.67
+east asia & pacific,sgp,6,77,1.3139931740614335,1.31,5,39,1.61,6,21,1.28,8,17,0.95
+east asia & pacific,idn,7,45,0.7679180887372014,0.77,7,16,0.66,7,5,0.3,6,24,1.34
+east asia & pacific,tha,8,31,0.5290102389078498,0.53,9,5,0.21,8,5,0.3,7,21,1.17
+east asia & pacific,mys,9,19,0.3242320819112628,0.32,8,9,0.37,10,3,0.18,9,7,0.39
+east asia & pacific,brn,10,6,0.10238907849829351,0.1,NA,NA,NA,9,4,0.24,11,2,0.11
+east asia & pacific,mmr,11,4,0.06825938566552901,0.07,NA,NA,NA,NA,NA,NA,10,4,0.22
+east asia & pacific,mng,12,2,0.034129692832764506,0.03,11,1,0.04,NA,NA,NA,12,1,0.06
+east asia & pacific,fji,13,1,0.017064846416382253,0.02,10,1,0.04,NA,NA,NA,NA,NA,NA
+east asia & pacific,ncl,14,1,0.017064846416382253,0.02,NA,NA,NA,11,1,0.06,NA,NA,NA
+east asia & pacific,vnm,15,1,0.017064846416382253,0.02,NA,NA,NA,NA,NA,NA,13,1,0.06
+latin america & caribbean,bra,1,585,33.23863636363637,33.24,1,211,32.76,1,128,34.78,1,246,32.89
+latin america & caribbean,mex,2,343,19.488636363636363,19.49,2,114,17.7,2,70,19.02,2,159,21.26
+latin america & caribbean,arg,3,254,14.431818181818182,14.43,3,77,11.96,3,47,12.77,3,130,17.38
+latin america & caribbean,chl,4,175,9.943181818181818,9.94,5,59,9.16,5,38,10.33,4,78,10.43
+latin america & caribbean,pan,5,150,8.522727272727272,8.52,4,62,9.63,4,40,10.87,5,48,6.42
+latin america & caribbean,cri,6,66,3.75,3.75,6,39,6.06,6,14,3.8,7,13,1.74
+latin america & caribbean,col,7,50,2.840909090909091,2.84,7,19,2.95,10,4,1.09,6,27,3.61
+latin america & caribbean,ury,8,38,2.159090909090909,2.16,8,17,2.64,8,8,2.17,8,13,1.74
+latin america & caribbean,tto,9,24,1.3636363636363635,1.36,11,8,1.24,7,8,2.17,9,8,1.07
+latin america & caribbean,bhs,10,18,1.0227272727272727,1.02,9,13,2.02,12,1,0.27,12,4,0.53
+latin america & caribbean,ecu,11,18,1.0227272727272727,1.02,10,9,1.4,9,5,1.36,13,4,0.53
+latin america & caribbean,ven,12,15,0.8522727272727272,0.85,12,6,0.93,11,2,0.54,10,7,0.94
+latin america & caribbean,guy,13,6,0.3409090909090909,0.34,NA,NA,NA,NA,NA,NA,11,6,0.8
+latin america & caribbean,brb,14,4,0.22727272727272727,0.23,14,2,0.31,13,1,0.27,15,1,0.13
+latin america & caribbean,per,15,4,0.22727272727272727,0.23,19,1,0.16,15,1,0.27,14,2,0.27
+latin america & caribbean,blz,16,2,0.11363636363636363,0.11,13,2,0.31,NA,NA,NA,NA,NA,NA
+latin america & caribbean,cub,17,2,0.11363636363636363,0.11,15,2,0.31,NA,NA,NA,NA,NA,NA
+latin america & caribbean,jam,18,2,0.11363636363636363,0.11,18,1,0.16,NA,NA,NA,17,1,0.13
+latin america & caribbean,bol,19,1,0.056818181818181816,0.06,16,1,0.16,NA,NA,NA,NA,NA,NA
+latin america & caribbean,cym,20,1,0.056818181818181816,0.06,NA,NA,NA,14,1,0.27,NA,NA,NA
+latin america & caribbean,grd,21,1,0.056818181818181816,0.06,17,1,0.16,NA,NA,NA,NA,NA,NA
+latin america & caribbean,gtm,22,1,0.056818181818181816,0.06,NA,NA,NA,NA,NA,NA,16,1,0.13
+sub-saharan africa,zaf,1,545,65.19138755980862,65.19,1,247,65.69,1,132,70.21,1,166,61.03
+sub-saharan africa,ken,2,50,5.980861244019139,5.98,2,19,5.05,2,14,7.45,3,17,6.25
+sub-saharan africa,uga,3,41,4.904306220095694,4.9,3,17,4.52,3,12,6.38,4,12,4.41
+sub-saharan africa,bwa,4,39,4.6650717703349285,4.67,5,13,3.46,6,4,2.13,2,22,8.09
+sub-saharan africa,tza,5,27,3.2296650717703352,3.23,4,16,4.26,4,7,3.72,10,4,1.47
+sub-saharan africa,civ,6,18,2.15311004784689,2.15,6,11,2.93,11,1,0.53,8,6,2.21
+sub-saharan africa,nam,7,18,2.15311004784689,2.15,7,10,2.66,13,1,0.53,7,7,2.57
+sub-saharan africa,rwa,8,18,2.15311004784689,2.15,8,8,2.13,NA,NA,NA,5,10,3.68
+sub-saharan africa,zwe,9,15,1.7942583732057416,1.79,9,8,2.13,5,5,2.66,14,2,0.74
+sub-saharan africa,gab,10,14,1.674641148325359,1.67,10,5,1.33,NA,NA,NA,6,9,3.31
+sub-saharan africa,mdg,11,11,1.3157894736842104,1.32,16,2,0.53,8,3,1.6,9,6,2.21
+sub-saharan africa,zmb,12,7,0.8373205741626795,0.84,12,4,1.06,10,2,1.06,18,1,0.37
+sub-saharan africa,cog,13,6,0.7177033492822966,0.72,11,4,1.06,NA,NA,NA,12,2,0.74
+sub-saharan africa,mrt,14,6,0.7177033492822966,0.72,17,2,0.53,7,4,2.13,NA,NA,NA
+sub-saharan africa,syc,15,5,0.5980861244019139,0.6,14,3,0.8,9,2,1.06,NA,NA,NA
+sub-saharan africa,eth,16,4,0.4784688995215311,0.48,NA,NA,NA,12,1,0.53,11,3,1.1
+sub-saharan africa,mus,17,3,0.3588516746411483,0.36,13,3,0.8,NA,NA,NA,NA,NA,NA
+sub-saharan africa,cmr,18,2,0.23923444976076555,0.24,18,1,0.27,NA,NA,NA,16,1,0.37
+sub-saharan africa,gnb,19,2,0.23923444976076555,0.24,15,2,0.53,NA,NA,NA,NA,NA,NA
+sub-saharan africa,sen,20,2,0.23923444976076555,0.24,NA,NA,NA,NA,NA,NA,13,2,0.74
+sub-saharan africa,caf,21,1,0.11961722488038277,0.12,NA,NA,NA,NA,NA,NA,15,1,0.37
+sub-saharan africa,cod,22,1,0.11961722488038277,0.12,NA,NA,NA,NA,NA,NA,17,1,0.37
+sub-saharan africa,nga,23,1,0.11961722488038277,0.12,19,1,0.27,NA,NA,NA,NA,NA,NA
+south asia,ind,1,243,94.921875,94.92,1,116,99.15,1,43,87.76,1,84,93.33
+south asia,lka,2,13,5.078125,5.08,2,1,0.85,2,6,12.24,2,6,6.67
+middle east & north africa,isr,1,515,94.32234432234432,94.32,1,171,91.94,1,185,96.86,1,159,94.08
+middle east & north africa,irn,2,12,2.197802197802198,2.2,2,8,4.3,2,4,2.09,NA,NA,NA
+middle east & north africa,mlt,3,5,0.9157509157509158,0.92,NA,NA,NA,NA,NA,NA,2,5,2.96
+middle east & north africa,sau,4,4,0.7326007326007326,0.73,5,2,1.08,4,1,0.52,6,1,0.59
+middle east & north africa,mar,5,3,0.5494505494505495,0.55,4,2,1.08,NA,NA,NA,5,1,0.59
+middle east & north africa,are,6,2,0.3663003663003663,0.37,3,2,1.08,NA,NA,NA,NA,NA,NA
+middle east & north africa,lby,7,2,0.3663003663003663,0.37,NA,NA,NA,NA,NA,NA,3,2,1.18
+middle east & north africa,dza,8,1,0.18315018315018314,0.18,6,1,0.54,NA,NA,NA,NA,NA,NA
+middle east & north africa,egy,9,1,0.18315018315018314,0.18,NA,NA,NA,NA,NA,NA,4,1,0.59
+middle east & north africa,qat,10,1,0.18315018315018314,0.18,NA,NA,NA,3,1,0.52,NA,NA,NA
