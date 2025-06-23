@@ -1,6 +1,20 @@
 region,country_code,rank_pooled,n_pooled,perc_pooled,rank_ab,n_ab,perc_ab,rank_be,n_be,perc_be,rank_bes,n_bes,perc_bes
-north america,usa,1,13421,78.71,1,6442,79.12,1,3197,75.85,1,3782,80.57
-north america,can,2,3630,21.29,2,1700,20.88,2,1018,24.15,2,912,19.43
+east asia & pacific,aus,1,3378,55.93,1,1359,54.45,1,1111,65.97,1,908,48.82
+east asia & pacific,chn,2,1007,16.67,2,405,16.23,2,212,12.59,2,390,20.97
+east asia & pacific,jpn,3,851,14.09,3,391,15.67,3,154,9.14,3,306,16.45
+east asia & pacific,nzl,4,333,5.51,4,173,6.93,4,94,5.58,4,66,3.55
+east asia & pacific,twn,5,180,2.98,5,76,3.04,5,39,2.32,5,65,3.49
+east asia & pacific,kor,6,104,1.72,7,21,0.84,6,35,2.08,6,48,2.58
+east asia & pacific,sgp,7,77,1.27,6,39,1.56,7,21,1.25,9,17,0.91
+east asia & pacific,idn,8,45,0.75,8,16,0.64,8,5,0.3,7,24,1.29
+east asia & pacific,tha,9,31,0.51,10,5,0.2,9,5,0.3,8,21,1.13
+east asia & pacific,mys,10,19,0.31,9,9,0.36,11,3,0.18,10,7,0.38
+east asia & pacific,brn,11,6,0.1,NA,NA,NA,10,4,0.24,12,2,0.11
+east asia & pacific,mmr,12,4,0.07,NA,NA,NA,NA,NA,NA,11,4,0.22
+east asia & pacific,mng,13,2,0.03,12,1,0.04,NA,NA,NA,13,1,0.05
+east asia & pacific,fji,14,1,0.02,11,1,0.04,NA,NA,NA,NA,NA,NA
+east asia & pacific,ncl,15,1,0.02,NA,NA,NA,12,1,0.06,NA,NA,NA
+east asia & pacific,vnm,16,1,0.02,NA,NA,NA,NA,NA,NA,14,1,0.05
 europe & central asia,gbr,1,6294,27.98,1,3171,33.26,1,1868,30.36,2,1255,18.45
 europe & central asia,deu,2,3142,13.97,2,1185,12.43,2,701,11.39,1,1256,18.46
 europe & central asia,fra,3,2221,9.87,3,1078,11.31,3,576,9.36,4,567,8.33
@@ -40,21 +54,6 @@ europe & central asia,arm,36,1,0,NA,NA,NA,NA,NA,NA,32,1,0.01
 europe & central asia,gib,37,1,0,NA,NA,NA,NA,NA,NA,33,1,0.01
 europe & central asia,grl,38,1,0,NA,NA,NA,29,1,0.02,NA,NA,NA
 europe & central asia,kaz,39,1,0,NA,NA,NA,NA,NA,NA,34,1,0.01
-east asia & pacific,aus,1,3378,57.65,1,1359,56.16,1,1111,67.54,1,908,50.58
-east asia & pacific,chn,2,1007,17.18,2,405,16.74,2,212,12.89,2,390,21.73
-east asia & pacific,jpn,3,851,14.52,3,391,16.16,3,154,9.36,3,306,17.05
-east asia & pacific,nzl,4,333,5.68,4,173,7.15,4,94,5.71,4,66,3.68
-east asia & pacific,kor,5,104,1.77,6,21,0.87,5,35,2.13,5,48,2.67
-east asia & pacific,sgp,6,77,1.31,5,39,1.61,6,21,1.28,8,17,0.95
-east asia & pacific,idn,7,45,0.77,7,16,0.66,7,5,0.3,6,24,1.34
-east asia & pacific,tha,8,31,0.53,9,5,0.21,8,5,0.3,7,21,1.17
-east asia & pacific,mys,9,19,0.32,8,9,0.37,10,3,0.18,9,7,0.39
-east asia & pacific,brn,10,6,0.1,NA,NA,NA,9,4,0.24,11,2,0.11
-east asia & pacific,mmr,11,4,0.07,NA,NA,NA,NA,NA,NA,10,4,0.22
-east asia & pacific,mng,12,2,0.03,11,1,0.04,NA,NA,NA,12,1,0.06
-east asia & pacific,fji,13,1,0.02,10,1,0.04,NA,NA,NA,NA,NA,NA
-east asia & pacific,ncl,14,1,0.02,NA,NA,NA,11,1,0.06,NA,NA,NA
-east asia & pacific,vnm,15,1,0.02,NA,NA,NA,NA,NA,NA,13,1,0.06
 latin america & caribbean,bra,1,585,33.24,1,211,32.76,1,128,34.78,1,246,32.89
 latin america & caribbean,mex,2,343,19.49,2,114,17.7,2,70,19.02,2,159,21.26
 latin america & caribbean,arg,3,254,14.43,3,77,11.96,3,47,12.77,3,130,17.38
@@ -77,6 +76,20 @@ latin america & caribbean,bol,19,1,0.06,16,1,0.16,NA,NA,NA,NA,NA,NA
 latin america & caribbean,cym,20,1,0.06,NA,NA,NA,14,1,0.27,NA,NA,NA
 latin america & caribbean,grd,21,1,0.06,17,1,0.16,NA,NA,NA,NA,NA,NA
 latin america & caribbean,gtm,22,1,0.06,NA,NA,NA,NA,NA,NA,16,1,0.13
+middle east & north africa,isr,1,515,94.32,1,171,91.94,1,185,96.86,1,159,94.08
+middle east & north africa,irn,2,12,2.2,2,8,4.3,2,4,2.09,NA,NA,NA
+middle east & north africa,mlt,3,5,0.92,NA,NA,NA,NA,NA,NA,2,5,2.96
+middle east & north africa,sau,4,4,0.73,5,2,1.08,4,1,0.52,6,1,0.59
+middle east & north africa,mar,5,3,0.55,4,2,1.08,NA,NA,NA,5,1,0.59
+middle east & north africa,are,6,2,0.37,3,2,1.08,NA,NA,NA,NA,NA,NA
+middle east & north africa,lby,7,2,0.37,NA,NA,NA,NA,NA,NA,3,2,1.18
+middle east & north africa,dza,8,1,0.18,6,1,0.54,NA,NA,NA,NA,NA,NA
+middle east & north africa,egy,9,1,0.18,NA,NA,NA,NA,NA,NA,4,1,0.59
+middle east & north africa,qat,10,1,0.18,NA,NA,NA,3,1,0.52,NA,NA,NA
+north america,usa,1,13421,78.71,1,6442,79.12,1,3197,75.85,1,3782,80.57
+north america,can,2,3630,21.29,2,1700,20.88,2,1018,24.15,2,912,19.43
+south asia,ind,1,243,94.92,1,116,99.15,1,43,87.76,1,84,93.33
+south asia,lka,2,13,5.08,2,1,0.85,2,6,12.24,2,6,6.67
 sub-saharan africa,zaf,1,545,65.19,1,247,65.69,1,132,70.21,1,166,61.03
 sub-saharan africa,ken,2,50,5.98,2,19,5.05,2,14,7.45,3,17,6.25
 sub-saharan africa,uga,3,41,4.9,3,17,4.52,3,12,6.38,4,12,4.41
@@ -100,15 +113,3 @@ sub-saharan africa,sen,20,2,0.24,NA,NA,NA,NA,NA,NA,13,2,0.74
 sub-saharan africa,caf,21,1,0.12,NA,NA,NA,NA,NA,NA,15,1,0.37
 sub-saharan africa,cod,22,1,0.12,NA,NA,NA,NA,NA,NA,17,1,0.37
 sub-saharan africa,nga,23,1,0.12,19,1,0.27,NA,NA,NA,NA,NA,NA
-south asia,ind,1,243,94.92,1,116,99.15,1,43,87.76,1,84,93.33
-south asia,lka,2,13,5.08,2,1,0.85,2,6,12.24,2,6,6.67
-middle east & north africa,isr,1,515,94.32,1,171,91.94,1,185,96.86,1,159,94.08
-middle east & north africa,irn,2,12,2.2,2,8,4.3,2,4,2.09,NA,NA,NA
-middle east & north africa,mlt,3,5,0.92,NA,NA,NA,NA,NA,NA,2,5,2.96
-middle east & north africa,sau,4,4,0.73,5,2,1.08,4,1,0.52,6,1,0.59
-middle east & north africa,mar,5,3,0.55,4,2,1.08,NA,NA,NA,5,1,0.59
-middle east & north africa,are,6,2,0.37,3,2,1.08,NA,NA,NA,NA,NA,NA
-middle east & north africa,lby,7,2,0.37,NA,NA,NA,NA,NA,NA,3,2,1.18
-middle east & north africa,dza,8,1,0.18,6,1,0.54,NA,NA,NA,NA,NA,NA
-middle east & north africa,egy,9,1,0.18,NA,NA,NA,NA,NA,NA,4,1,0.59
-middle east & north africa,qat,10,1,0.18,NA,NA,NA,3,1,0.52,NA,NA,NA

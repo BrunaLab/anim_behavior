@@ -7,17 +7,29 @@
 
 library(tidyverse)
 library(refsplitr)
-
-
+library(countrycode)
+library(janitor)
 # load clean data ---------------------------------------------------
 
 all_pubs<-read_csv("./data_clean/all_pubs.csv") %>% 
   filter(refID != 3039) %>% 
   filter(refID != 4068) 
 
-all_refined<-read_csv("./data_clean/all_refined.csv")
+all_georef <-read_rds("./data_clean/all_georef_clean.rds") %>% 
+  arrange(refID,author_order)
 
-all_georef <-read_rds("./data_clean/all_georef_clean.rds")
+
+
+
+# add country codes, WB region and income cats ----------------------------
+
+
+source("add_income_region.R")
+all_georef<-add_income_region(all_georef) %>% 
+  relocate(refID,.before=1)
+
+
+# add pub yr, jrnl to georef ----------------------------------------------
 
 
 
@@ -34,13 +46,123 @@ pub_data<-all_pubs %>% select(refID,SO,PY) %>%
 
 all_georef<-left_join(all_georef,pub_data,by="refID")
 
+
+# streamline income cats and regions --------------------------------------
+
+all_georef<-all_georef %>% 
+  mutate(income_group =
+           case_when(
+             income_group == "high income" ~ "high",
+             income_group == "upper middle income" ~ "upper middle",
+             income_group == "lower middle income" ~ "lower middle",
+             income_group == "low income" ~ "low",
+             .default = as.character(income_group)
+           )
+  ) %>% 
+  
+  mutate(region_code =
+           case_when(
+             region == "east asia & pacific" ~ "easp",
+             region == "north america" ~ "namr",
+             region == "europe & central asia" ~ "epca",
+             region == "latin america & caribbean" ~ "lacb",
+             region == "sub-saharan africa" ~ "suba",
+             region == "south asia" ~ "soas",
+             region == "middle east & north africa" ~ "mena",
+             .default = as.character(region)
+           )
+  ) %>% 
+  relocate(region_code,.after="region")
+
+
+all_georef %>% select(country_name,income_group,region_code) %>% unique() %>% arrange(income_group)
+
+
+
+# categorize as global north or global south ------------------------------
+
+
+all_georef<-all_georef %>% 
+  mutate(gns =
+           case_when(
+             income_group == "high" ~ "north",
+             .default = "south"
+           )
+  ) %>% 
+  
+  mutate(gns =
+           case_when(
+             country_name == "trinidad tobago" ~ "south",
+             country_name == "guyana" ~ "south",
+             country_name == "cayman islands" ~ "south",
+             country_name == "uruguay" ~ "south",
+             country_name == "chile" ~ "south",
+             country_name == "panama" ~ "south",
+             country_name == "new caledonia" ~ "south",
+             country_name == "could not be extracted" ~ NA,
+              # singapore
+              # brunei
+              # united arab emirates 
+              # qatar
+              # saudi arabia
+             .default = as.character(gns)
+           )
+  ) %>% 
+  relocate(gns,.before="region")
+
+
+
+# identify collaborative papers (>1 author) -------------------------------
+
+collab_pubs<-all_georef %>% 
+  group_by(refID, .drop = FALSE) %>%
+  count() %>% 
+  filter(n>1) %>% 
+  select(refID)
+
+
+
+all_georef_collab<-all_georef %>% 
+  filter(refID %in% collab_pubs$refID)
+
+
+# all coauthors same region? ----------------------------------------------
+
+
+all_georef_collab<-all_georef_collab %>% 
+  group_by(refID) %>% 
+  # mutate(all_same_region = n_distinct(region) == 1) %>% 
+  mutate(all_same_region = n_distinct(region[!is.na(region)]) == 1) %>%  # this excludes all with NA in region
+  # mutate(all_same_gns = n_distinct(gns) == 1) 
+  mutate(all_same_gns = n_distinct(gns[!is.na(gns)]) == 1) # this excludes all with NA in gns
+
+# for first authors from given region, are all authors from same region?
+all_georef_collab %>% 
+  filter(author_order==1) %>% 
+  group_by(region,all_same_region) %>% 
+  tally() %>% 
+  mutate(perc=n/sum(n)*100)
+
+
+# for first authors from GS or GN, are all authors from GS or GN?
+all_georef_collab %>% 
+  filter(author_order==1) %>% 
+  group_by(gns,all_same_gns) %>% 
+  tally() %>% 
+  mutate(perc=n/sum(n)*100)
+
+
+
+
+
+
 # papers 
 total_pubs<-
 all_georef %>% 
   select(refID) %>%
   distinct() %>% 
   tally()
-
+total_pubs
 
 # authors 
 
@@ -49,6 +171,7 @@ total_authors<-all_georef %>%
   distinct() %>% 
   tally()
 total_authors
+
 # authors without address (no extraction possible)
 na_authors<-
 all_georef %>% 
@@ -59,7 +182,7 @@ all_georef %>%
 na_authors
 
 geocoded_authors<-total_authors-na_authors
-
+geocoded_authors
 # COUNTRY (note - UK countries separate when using country.name but not when
 # using country_code)
 top_countries<-all_georef %>% 
@@ -68,6 +191,9 @@ top_countries<-all_georef %>%
   filter(!is.na(country_code)) %>% 
   tally() %>% 
   arrange(desc(n))
+top_countries
+
+
 
 # World Bank Region
 
@@ -91,6 +217,18 @@ all_georef %>%
   mutate(perc=n/sum(n)*100) %>% 
   arrange(desc(n))
 
+ # global north vs global south
+
+all_georef %>% 
+  group_by(gns) %>% 
+  # filter(!is.na(region)) %>% 
+  tally() %>% 
+  mutate(perc=n/sum(n)*100) %>% 
+  arrange(desc(n)) %>% 
+  arrange(gns)
+
+
+
 
 # countries within regions
 
@@ -109,7 +247,7 @@ top_countries_by_region_all<-all_georef %>%
   relocate(rank_pooled,.before="n_pooled") %>% 
   mutate(country_code=as.factor(country_code)) %>% 
   mutate(perc_pooled=round(perc_pooled,2))
-
+top_countries_by_region_all
 
 
 top_countries_by_region<-all_georef %>% 
@@ -125,12 +263,13 @@ top_countries_by_region<-all_georef %>%
   mutate(jrnl=as.factor(jrnl),
          country_code=as.factor(country_code)) %>% 
   mutate(perc=round(perc,2))
-  
+top_countries_by_region
 
 ab<-top_countries_by_region %>% 
   filter(jrnl=="ab") %>% 
   pivot_wider(names_from = jrnl, values_from = n:perc, values_fill = 0) %>% 
   rename(rank_ab=rank)
+ab
 
 be<-top_countries_by_region %>% 
   filter(jrnl=="be") %>% 
@@ -141,6 +280,7 @@ bes<-top_countries_by_region %>%
   filter(jrnl=="bes") %>% 
   pivot_wider(names_from = jrnl, values_from = n:perc, values_fill = 0) %>% 
   rename(rank_bes=rank)
+bes
 
 country_rankings_within_region<-top_countries_by_region_all %>% 
 full_join(ab,by=c("region","country_code")) %>% 
@@ -211,3 +351,23 @@ addresses_perc<-full_join(addresses,addresses_yr) %>%
 addresses_perc
 
 
+
+
+
+all_georef %>% 
+  group_by(refID) %>% 
+  mutate(latam=(region=="latin america & caribbean")) %>% 
+  relocate(latam,.before=1)
+  
+
+
+all_georef %>% 
+  group_by(refID) %>% 
+  filter(region=="latin america & caribbean")
+
+all_georef %>% 
+  group_by(refID) %>% 
+  slice_head(n=1) %>% 
+  tally()
+  ggplot(all_georef, aes(x=xValue, y=yValue)) +
+  geom_line()

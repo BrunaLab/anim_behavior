@@ -1,7 +1,8 @@
 add_income_region <- function(DATASET) {
   
-  library(countrycode)
-  
+  # library(countrycode)
+  # library(janitor)
+  # DATASET<-all_georef_clean
   # IMPORT World Bank Data on country Income and Region
   # data downloaded 20260618 from https://datacatalog.worldbank.org/search/dataset/0037712
   wdi_data<-read_csv("./data_raw/WDI_CSV_2025_06_05/WDICountry.csv") %>% 
@@ -62,7 +63,11 @@ add_income_region <- function(DATASET) {
   DATASET$income_group <-  factor(x =  DATASET$income_group, levels = incomes_ordered_list)
   DATASET$region <-  factor(x =  DATASET$region, levels = regions_ordered_list)
   
-  
+  DATASET<-DATASET %>% 
+    rename(country_name=country.name) %>% 
+    select(-short_name,
+           -table_name,
+           -long_name)
   
   # Northern Ireland is incorrectly coded as IRL instead of GBR
   # DATASET$geo.code[DATASET$COUNTRY == "NORTH IRELAND"]  <- "GBR"    
@@ -72,6 +77,28 @@ add_income_region <- function(DATASET) {
   # DATASET$geo.code[DATASET$COUNTRY == "Northern Ireland"]  <- "GBR" 
   # 
   # rm(wdi_data,REGIONS.ORDERED.LIST,INCOMES.ORDERED.LIST)
+  
+  # Venezuela doesnt supply data to WB needed to assign to income group. prior to 
+  # no longer sending data it was upper-middle, but analyssts suggest now 
+  # lower-middle
+  
+  # taiwan = high income
+  
+  DATASET<-DATASET %>% 
+  mutate(income_group =
+           case_when(
+             country_name == "venezuela" ~ "lower middle income",
+             country_name == "taiwan" ~ "high income",
+             .default = as.character(income_group)
+           )
+  ) %>% 
+    mutate(region =
+             case_when(
+               country_name == "taiwan" ~ "east asia & pacific",
+               .default = as.character(region)
+             )
+    )
+  
   
   
   return(DATASET)
