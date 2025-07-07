@@ -114,13 +114,14 @@ all_georef<-all_georef %>%
 
 
 
-
-
+write_rds(all_georef, "./data_clean/georef_data_analysis.rds")
 
 
 
 # missing authors ---------------------------------------------------------
 
+
+authors_affils<-read_rds("./data_clean/authors_affils_df_clean.rds")
 
 authors_affils<-authors_affils %>% 
   select(-entry_no,-source,-author_url)
@@ -397,16 +398,33 @@ arrange(desc(pick(starts_with("n_bes"))))
 
 
 plot_addresses_points <- plot_addresses_points(all_georef)
-plot_addresses_points
+# plot_addresses_points
+ggsave("./img/plot_addresses_points.png",width = 20, height = 20, units = "cm")
 
-Plot 
+all_georef<-read_rds("./data_clean/georef_data_analysis.rds")
+# papers woith first author from latin america
+latam_1st<-
+all_georef %>% 
+  filter(author_order==1) %>% 
+  filter(region=="latin america & caribbean") %>% 
+  select(refID)
 
-plot_net_address <-plot_net_address(all_georef,
+latam_1st<-all_georef %>% 
+  filter(refID %in% latam_1st$refID) %>% 
+  filter(!is.na(lat)) %>% 
+  filter(!is.na(lon)) 
+
+
+latam_1st<-latam_1st %>% select("authorID","university","postal_code","country"= country_name,"lat",
+  "lon","groupID","author_order","address","department",
+  "RP_address","RI","OI","UT","refID") 
+# plot_net_address <-plot_net_address(all_georef),
+plot_net_address_latam_1st <-plot_net_address(latam_1st,
                                     lineResolution = 10,
                                     lineAlpha=.1)
-plot_net_address
 
 
+ggsave("./img/plot_net_address_latam_1st.png",width = 20, height = 20, units = "cm")
 
 
 
