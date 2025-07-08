@@ -1,6 +1,7 @@
 ---
-title: "Animal Behavior Journals - Coauthorship"
-author: "Emilio M. Bruna"
+title: "International Collaboration in Animal Behavior: "
+subtitle: "An analysis of coauthorship in three leading journals" 
+author: "Trillo et al."
 date: "`r Sys.Date()`"
 output: html_document
 # output: pdf_document
@@ -14,6 +15,32 @@ library(kableExtra)
 library(RColorBrewer)
 ```
 
+
+```{r GlobalOptions, include = FALSE}
+options(knitr.duplicate.label = 'allow')
+options(knitr.graphics.error = FALSE)  # This allows for the include_graphics to not use the path from root 
+knitr::opts_chunk$set(echo = TRUE, fig.align="center")
+knitr::opts_chunk$set(fig.pos = "H", out.extra = "")
+knitr::opts_chunk$set(tab.pos = "H", out.extra = "")
+comma <- function(x) format(x, digits = 2, big.mark = ",") # number formatting
+```
+
+
+
+## Methods
+
+On June 12, 2025 we downloaded the bibliographic record of every article published in _Animal Behavior_, _Behavioral Ecology_, and _Behavioral Ecology & Sociobiology_ that was indexed in the Web of Science _Core Collection_. These records were then processed and organized using the R package [`refsplitr`](https://docs.ropensci.org/refsplitr/index.html), with which we also disambiguated author names and visualized author locations and coauthorship networks.
+
+
+Countries were assigned to Global Regions and National Income Categories using the [World Bank categories](https://datahelpdesk.worldbank.org/knowledgebase/articles/906519-world-bank-country-and-lending-groups).   
+
+Data and Code are available on [Github](https://github.com/BrunaLab/anim_behavior).
+
+
+Fournier, A., M. E. Boone, F. R. Stevens, and E. M. Bruna. 2020. `refsplitr`: Author name disambiguation, author georeferencing, and mapping of coauthorship networks with Web of Science data. _Journal of Open Source Software_, 5(45), 2028, https://doi.org/10.21105/joss.02028
+
+
+## Results
 
 
 ```{r include = FALSE,echo = FALSE,message = FALSE,warning = FALSE}
@@ -61,26 +88,28 @@ all_georef %>%
 
 ```
 
+### Publications
 
-#### Total Publications per Journal
+#### 1. Total No. of Publications _(all journals combined)_: N = `r comma(total_pubs)`   
+
+--- 
+
+#### 2. Publications per Journal
 
 ```{r echo = FALSE}
 total_pubs_jrnl %>% 
-  rename(Journal=SO) %>% 
+  rename(Journal=SO,
+         N=n) %>% 
    kbl() %>%
   # kable_styling() %>% 
   kable_styling(latex_options = "HOLD_position")
 ```
 
-#### Total Publications (all journals combined)
-
-N = `r total_pubs`
 
 ---
 
 
 ```{r include = FALSE,echo = FALSE,message = FALSE,warning = FALSE}
-
 
 total_authors<-all_georef %>% 
   select(groupID) %>%
@@ -89,13 +118,15 @@ total_authors<-all_georef %>%
 
 ```
 
-#### Total Authors (all journals combined)
+### Authors 
 
-N = `r total_authors`
+#### 1. Total No. of Authors _(all journals combined)_: N = `r comma(total_authors)`
 
 ---
 
-#### Author Countries (top N = 20)
+#### 2. In which countries are authors based? 
+
+Top N = 20 countries _(all journals combined)_
 
 ```{r include = FALSE,echo = FALSE,message = FALSE,warning = FALSE}
 
@@ -117,6 +148,10 @@ top_countries
 
 ```{r echo = FALSE}
 top_countries %>% 
+  mutate("Country (ISO code)"=paste(country_name," (",country_code,")")) %>% 
+  select(-country_name,-country_code) %>% 
+  rename(N=n) %>% 
+  select("Country (ISO code)",N) %>% 
    kbl() %>%
   # kable_styling() %>% 
   kable_styling(latex_options = "HOLD_position")
@@ -251,9 +286,6 @@ arrange(desc(pick(starts_with("n_bes"))))
 
 
 
-
-
-
 all_refined<-read_csv("./data_clean/all_refined.csv")
 
 
@@ -343,10 +375,12 @@ all_georef_collab<-all_georef_collab %>%
 
 ```
 
+### Coauthorhsip Analysis _(Note: Only papers with >1 author)_  
 
-#### For first authors from given region (i.e., Global North or Global South), are all co-authors from the same region?
 
-_Note: this is only for papers with >1 author_  
+#### 1. Are all co-authors from the same global region as the 1st Author?
+
+
 
 ```{r include = FALSE,echo = FALSE,message = FALSE,warning = FALSE}
 region_coauthors<-
@@ -362,6 +396,10 @@ all_georef_collab %>%
 ```{r echo = FALSE}
 region_coauthors %>% 
   mutate(perc=round(perc,2)) %>% 
+  rename("first author based in..." = region,
+         'all coauthors in same region'=all_same_region,
+         N=n,
+         "%" = perc) %>% 
    kbl() %>%
   # kable_styling() %>% 
   kable_styling(latex_options = "HOLD_position")
@@ -383,7 +421,7 @@ ggplot(region_coauthors,
 
 ---
 
-#### For first authors from the Global North or South, are all co-authors also from the Global North or South?
+#### 2. Where are the coauthors of papers with 1st authors based in the Global North or South?
 
 ```{r include = FALSE,echo = FALSE,message = FALSE,warning = FALSE}
 
@@ -401,6 +439,11 @@ all_georef_collab %>%
 ```{r echo = FALSE}
 gns_coauthors %>% 
   mutate(perc=round(perc,2)) %>% 
+  rename("first author based in..." = gns,
+         'all coauthors in same'=all_same_gns,
+         N=n,
+         "%" = perc) %>% 
+  # mutate("N (%)"= paste(n," (",perc,")", sep = "")) %>% 
    kbl() %>%
   # kable_styling() %>% 
   kable_styling(latex_options = "HOLD_position")
@@ -419,6 +462,31 @@ ggplot(gns_coauthors,
   theme(legend.position="none")
 ```
 
+---
 
 
-![Author Locations](img//plot_addresses_points.png){width=75%}
+#### All author locations 
+
+![Author Locations (all journals, all articles)](img/plot_addresses_points.png){width=75%}. 
+
+#### 1st Author Locations 
+
+![First Author Locations (all journals, all articles)](img/plot_addresses_points_first.png){width=75%}. 
+
+
+#### 1st Authors based in Latin America & Caribbean 
+
+
+
+![Locations of 1st authors based in Latin America](img/plot_addresses_points_latam1st.png){width=75%}
+
+![Coauthorship Networks for articles with 1st authors based in Latin America](img/plot_net_address_latam_1st.png){width=75%}
+
+---
+
+#### 1st Authors based in the USA
+
+
+![Locations of 1st authors based in USA](img/plot_addresses_points_usa1st.png){width=75%}
+
+![Coauthorship Networks for articles with 1st authors based in USA](img/plot_net_address_usa_1st.png){width=75%}

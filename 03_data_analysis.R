@@ -394,14 +394,27 @@ top_countries_by_region %>%
 arrange(desc(pick(starts_with("n_bes"))))
 
 # plot points -------------------------------------------------------------
+all_georef<-read_rds("./data_clean/georef_data_analysis.rds")
 
-
+# ALL AUTHORS - POINTS
 
 plot_addresses_points <- plot_addresses_points(all_georef)
 # plot_addresses_points
-ggsave("./img/plot_addresses_points.png",width = 20, height = 20, units = "cm")
+ggsave("./img/plot_addresses_points.png",width = 40, height = 40, units = "cm")
 
-all_georef<-read_rds("./data_clean/georef_data_analysis.rds")
+
+# ALL FIRST AUTHORS - POINTS
+
+
+first_author_location<-
+  all_georef %>% 
+  filter(author_order==1) %>% 
+  filter(groupID!=31167)   # NEED TO FIX THIS LON 
+
+plot_addresses_points_1st <- plot_addresses_points(first_author_location)
+ggsave("./img/plot_addresses_points_first.png",width = 40, height = 40, units = "cm")
+# LATAM 1st AUTHORS - POINTS
+
 # papers woith first author from latin america
 latam_1st<-
 all_georef %>% 
@@ -409,10 +422,26 @@ all_georef %>%
   filter(region=="latin america & caribbean") %>% 
   select(refID)
 
+# LATAM 1st AUTHORS - COAUTHORS
+
+latam_1st_location<-
+  all_georef %>% 
+  filter(author_order==1) %>% 
+  filter(groupID!=31167) %>%  # NEED TO FIX THIS LON 
+  filter(region=="latin america & caribbean") 
+plot_addresses_points_latam1st <- plot_addresses_points(latam_1st_location)
+# plot_addresses_points
+ggsave("./img/plot_addresses_points_latam1st.png",width = 40, height = 40, units = "cm")
+
+
+
 latam_1st<-all_georef %>% 
   filter(refID %in% latam_1st$refID) %>% 
   filter(!is.na(lat)) %>% 
   filter(!is.na(lon)) 
+
+
+
 
 
 latam_1st<-latam_1st %>% select("authorID","university","postal_code","country"= country_name,"lat",
@@ -421,11 +450,53 @@ latam_1st<-latam_1st %>% select("authorID","university","postal_code","country"=
 # plot_net_address <-plot_net_address(all_georef),
 plot_net_address_latam_1st <-plot_net_address(latam_1st,
                                     lineResolution = 10,
-                                    lineAlpha=.1)
+                                    lineAlpha=.05)
 
 
-ggsave("./img/plot_net_address_latam_1st.png",width = 20, height = 20, units = "cm")
+ggsave("./img/plot_net_address_latam_1st.png",width = 40, height = 40, units = "cm")
 
+
+# USA FIRST authors
+
+
+# papers with first author from latin america
+usa_1st<-
+  all_georef %>% 
+  filter(author_order==1) %>% 
+  filter(country_code=="usa") %>% 
+  select(refID)
+
+# USA 1st AUTHORS - COAUTHORS
+
+usa_1st_location<-
+  all_georef %>% 
+  filter(author_order==1) %>% 
+  filter(country_code=="usa") 
+plot_addresses_points_usa1st <- plot_addresses_points(usa_1st_location)
+# plot_addresses_points
+ggsave("./img/plot_addresses_points_usa1st.png",width = 40, height = 40, units = "cm")
+
+
+
+usa_1st<-all_georef %>% 
+  filter(refID %in% usa_1st$refID) %>% 
+  filter(!is.na(lat)) %>% 
+  filter(!is.na(lon)) 
+
+
+
+
+
+usa_1st<-usa_1st %>% select("authorID","university","postal_code","country"= country_name,"lat",
+                                "lon","groupID","author_order","address","department",
+                                "RP_address","RI","OI","UT","refID") 
+# plot_net_address <-plot_net_address(all_georef),
+plot_net_address_usa_1st <-plot_net_address(usa_1st,
+                                              lineResolution = 10,
+                                              lineAlpha=.05)
+
+
+ggsave("./img/plot_net_address_usa_1st.png",width = 40, height = 40, units = "cm")
 
 
 
