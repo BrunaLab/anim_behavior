@@ -550,3 +550,96 @@ all_georef %>%
   tally()
   ggplot(all_georef, aes(x=xValue, y=yValue)) +
   geom_line()
+  
+  
+  
+  
+  
+  
+  
+
+# how many countries per author list --------------------------------------
+
+
+  
+  # geo_referenced publications
+  all_georef<-read_rds("./data_clean/georef_data_analysis.rds")
+  
+  # missing authors 
+  
+  authors_affils<-read_rds("./data_clean/authors_affils_df_clean.rds")
+  
+  authors_affils<-authors_affils %>% 
+    select(-entry_no,-source,-author_url)
+  
+  authors_affils<-authors_affils %>% 
+    mutate(first_middle_initials=gsub("[.]","",first_middle_initials)) %>% 
+    unite("author_name",c(surname,first_middle_initials),sep=", ",remove=FALSE) 
+  
+  authors_affils<-authors_affils %>% 
+    group_by(author_name,author_order) %>% 
+    slice_head(n=1) %>% 
+    mutate(last_name=surname)  
+  
+  most_common_affils<-authors_affils %>% 
+    group_by(affiliation,country) %>% 
+    tally() %>% 
+    arrange(desc(n)) %>% 
+    drop_na()
+  
+  
+  
+  
+  
+  collab_pubs<-all_georef %>% 
+    group_by(refID, .drop = FALSE) %>%
+    count() %>% 
+    filter(n>1) %>% 
+    select(refID)
+  
+  
+  
+  all_georef_collab<-all_georef %>% 
+    filter(refID %in% collab_pubs$refID)
+  
+  collab_1st_author_info<-all_georef_collab %>% 
+    group_by(refID) %>% 
+    slice_head(n=1) %>% 
+    select(refID,
+           country_name,
+           country_code,
+           gns,
+           region,
+           region_code,
+           income_group)
+  
+  countries_per_article<-all_georef_collab %>% 
+    group_by(refID) %>% 
+    summarize(n_countries=n_distinct(country_code)) %>% 
+    arrange(desc(n_countries)) 
+  
+  
+  authors_per_article<-all_georef_collab %>% 
+    group_by(refID) %>% 
+    count() %>% 
+    arrange(desc(n)) %>% 
+    rename(n_authors=n)
+  
+  
+  collab_1st_author_info<- left_join(collab_1st_author_info,countries_per_article,by="refID") %>% 
+    left_join(authors_per_article,by="refID")
+  
+  collab_1st_author_info %>% 
+    group_by(region) %>% 
+    summarize(avg_n_authors=mean(n_authors),
+              sd_n_authors=sd(n_authors),
+              avg_n_countries=mean(n_countries),
+              sd_n_countries=sd(n_countries)) %>% 
+    drop_na()
+  
+  
+  how many from latin america
+  
+  latam_pubs_total<-all_georef %>% 
+    filter(region_code=="lacb") %>% 
+    summarize(n_latam=n_distinct(refID))

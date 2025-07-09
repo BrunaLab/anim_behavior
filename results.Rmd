@@ -86,18 +86,46 @@ all_georef %>%
   distinct() %>% 
   tally()
 
+
+latam_pubs_total<-all_georef %>% 
+    filter(region_code=="lacb") %>% 
+    summarize(n_latam=n_distinct(refID))
+
+latam_1st_author_pubs<-all_georef %>% 
+  filter(author_order==1) %>% 
+    filter(region_code=="lacb") %>% 
+    summarize(n_latam=n_distinct(refID))
+
+latam_pubs_jrnl<-
+all_georef %>% 
+  filter(author_order==1) %>% 
+  filter(region_code=="lacb") %>% 
+  group_by(SO) %>% 
+  tally() %>% 
+  rename(n_latam_first=n)
+
+total_pubs_jrnl<-left_join(total_pubs_jrnl,latam_pubs_jrnl,by="SO") %>% 
+  mutate(percent_latam=n_latam_first/n*100)
+
 ```
 
 ### Publications
 
-#### 1. Total No. of Publications _(all journals combined)_: N = `r comma(total_pubs)`   
+#### 1. No. of Publications _(all journals combined)_: N = `r comma(total_pubs)`   
+
+#### 2. No. of Publications with at least 1 author from LatAm _(all journals combined)_: N = `r comma(latam_pubs_total)` (`r comma(latam_pubs_total/total_pubs*100)`%)  
+
+#### 3. No. of Publications with 1st author from LatAm _(all journals combined)_: N = `r comma(latam_1st_author_pubs)` (`r comma(latam_1st_author_pubs/total_pubs*100)`%)  
+
+
 
 --- 
 
-#### 2. Publications per Journal
+#### 4. Publications per Journal (overall and with LatAm 1st Author)
 
 ```{r echo = FALSE}
 total_pubs_jrnl %>% 
+  mutate_all(comma) %>% 
   rename(Journal=SO,
          N=n) %>% 
    kbl() %>%
@@ -107,6 +135,7 @@ total_pubs_jrnl %>%
 
 
 ---
+
 
 
 ```{r include = FALSE,echo = FALSE,message = FALSE,warning = FALSE}
@@ -140,24 +169,154 @@ top_countries<-all_georef %>%
   tally() %>% 
   arrange(desc(n)) %>% 
   ungroup() %>% 
-  slice(1:20)
-top_countries
-
+  mutate(percent=(n/sum(n)*100)) %>% 
+  slice(1:20) 
 ```
 
 
 ```{r echo = FALSE}
 top_countries %>% 
+  mutate_all(comma) %>% 
   mutate("Country (ISO code)"=paste(country_name," (",country_code,")")) %>% 
   select(-country_name,-country_code) %>% 
   rename(N=n) %>% 
-  select("Country (ISO code)",N) %>% 
+  select("Country (ISO code)",N, percent) %>% 
    kbl() %>%
   # kable_styling() %>% 
   kable_styling(latex_options = "HOLD_position")
 ```
 
 
+
+#### 3. In which region are authors based? 
+
+
+
+```{r include = FALSE,echo = FALSE,message = FALSE,warning = FALSE}
+
+top_regions<-all_georef %>% 
+  # group_by(country.name) %>% 
+  group_by(region) %>% 
+  tally() %>% 
+  drop_na() %>% 
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  mutate(percent=(n/sum(n)*100))
+  
+
+
+```
+
+
+```{r echo = FALSE}
+top_regions %>% 
+  mutate_all(comma) %>% 
+  rename(N=n) %>% 
+   kbl() %>%
+  # kable_styling() %>% 
+  kable_styling(latex_options = "HOLD_position")
+```
+
+
+
+
+--- 
+
+#### 4. What are the most commonly represented affiliations? 
+
+Top N = 20 Affiliations _(all journals combined)_ 
+
+**_Preliminary Results_**: affiliations still require some cleaning
+
+_Note: these are not unique authors (i.e., the same author at UF publishing 5 papers = UF x 5)_
+
+```{r include = FALSE,echo = FALSE,message = FALSE,warning = FALSE}
+
+  most_common_affils<-authors_affils %>% 
+    group_by(affiliation,country) %>% 
+    tally() %>% 
+  drop_na() %>%   
+  arrange(desc(n)) %>% 
+  ungroup() %>% 
+  slice(1:20)
+
+
+```
+
+```{r echo = FALSE}
+most_common_affils %>% 
+  rename(N=n,
+         Country=country,
+         Affiliation=affiliation) %>% 
+   kbl() %>%
+  # kable_styling() %>% 
+  kable_styling(latex_options = "HOLD_position")
+```
+
+---
+
+#### 4. No. of coauthors & No. of countries on author list by region of 1st author 
+
+
+```{r include = FALSE,echo = FALSE,message = FALSE,warning = FALSE}
+
+  collab_pubs<-all_georef %>%
+    group_by(refID, .drop = FALSE) %>%
+    count() %>%
+    filter(n>1) %>%
+    select(refID)
+
+
+#
+  all_georef_collab<-all_georef %>%
+    filter(refID %in% collab_pubs$refID)
+  
+  collab_1st_author_info<-all_georef_collab %>% 
+    group_by(refID) %>% 
+    slice_head(n=1) %>% 
+    select(refID,
+           country_name,
+           country_code,
+           gns,
+           region,
+           region_code,
+           income_group)
+  
+  countries_per_article<-all_georef_collab %>% 
+    group_by(refID) %>% 
+    summarize(n_countries=n_distinct(country_code)) %>% 
+    arrange(desc(n_countries)) 
+  
+  
+  authors_per_article<-all_georef_collab %>% 
+    group_by(refID) %>% 
+    count() %>% 
+    arrange(desc(n)) %>% 
+    rename(n_authors=n)
+  
+  
+  collab_1st_author_info<- left_join(collab_1st_author_info,countries_per_article,by="refID") %>% 
+    left_join(authors_per_article,by="refID")
+collab_1st_author_summary<-
+  collab_1st_author_info %>% 
+    group_by(region) %>% 
+    summarize(avg_n_authors=mean(n_authors),
+              sd_n_authors=sd(n_authors),
+              avg_n_countries=mean(n_countries),
+              sd_n_countries=sd(n_countries)) %>% 
+    drop_na()
+```
+
+
+```{r echo = FALSE}
+collab_1st_author_summary %>% 
+  mutate_all(comma) %>% 
+   kbl() %>%
+  # kable_styling() %>% 
+  kable_styling(latex_options = "HOLD_position")
+```
+
+---
 
 ```{r include = FALSE,echo = FALSE,message = FALSE,warning = FALSE}
 
@@ -348,7 +507,7 @@ all_georef %>%
 --- 
 
 
-```{r include = FALSE,echo = FALSE,message = FALSE,warning = FALSE}
+```{r include = FALSE,echo = TRUE,message = FALSE,warning = FALSE}
 
 collab_pubs<-all_georef %>% 
   group_by(refID, .drop = FALSE) %>%
